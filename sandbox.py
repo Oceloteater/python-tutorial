@@ -5,11 +5,11 @@
 # print(lads)
 # print('ID: '+str(id(friends))+' ID: '+str(id(lads)))
 
-# ages = [
-#     {'name': 'Adam', 'age': 31},
-#     {'name': 'Catherine', 'age': 27},
-#     {'name': 'Aaron', 'age': 25}
-# ]
+ages = [
+    {'name': 'Adam', 'age': 31},
+    {'name': 'Catherine', 'age': 27},
+    {'name': 'Aaron', 'age': 25}
+]
 # for peeps in ages:
 #     for name, age in peeps.items():
 #         print(f'{name} : {age}')
@@ -20,3 +20,17 @@
 # double = list(map(lambda x: x * 2, sequence))
 
 # print(double)
+
+
+def named(**kwargs):
+    print(kwargs)
+
+
+def print_nicely(*args, **kwargs):
+    named(**kwargs)
+    print(args)
+    for arg, value in kwargs.items():
+        print(f'{arg}: {value}')
+
+
+print_nicely(*ages, name='adam', age=31)
