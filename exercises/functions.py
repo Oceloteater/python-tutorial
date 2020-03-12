@@ -12,9 +12,12 @@ def get_friends_name(friend):
 
 
 friends = [
-    {'name': 'Adam', 'age': 31},
-    {'name': 'Catherine', 'age': 27},
-    {'name': 'Aaron', 'age': 25}
+    {'name': 'Adam', 'age': 31, 'access_level': 'guest'},
+    {'name': 'Catherine', 'age': 27, 'access_level': 'admin'},
+    {'name': 'Aaron', 'age': 25, 'access_level': 'guest'}
 ]
 
 print(search(friends, 'Adam', get_friends_name))
+
+# or lambda func
+print(search(friends, 'Aaron', lambda friend: friend['name']))
