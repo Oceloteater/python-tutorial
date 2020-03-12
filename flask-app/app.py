@@ -1,10 +1,10 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
 
 stores = [
     {
-        'name': 'My Store',
+        'name': 'my-store',
         'items': [
             {
                 'name': 'My Item',
@@ -13,6 +13,11 @@ stores = [
         ]
     }
 ]
+
+
+@app.route('/')
+def home():
+    return render_template('index.html')  # does find html
 
 
 @app.route('/store', methods=['POST'])  # POST /store data: { name: string }
