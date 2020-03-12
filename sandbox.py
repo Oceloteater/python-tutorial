@@ -1,4 +1,5 @@
 # testing code
+from typing import List
 
 # friends = ['Adam', 'Catherine', 'Aaron']
 # lads = [friend for friend in friends if friend.startswith('A')]
@@ -22,15 +23,19 @@ ages = [
 # print(double)
 
 
+def list_avg(sequence: List) -> float:
+    return sum(sequence) / len(sequence)
+
+
 def named(**kwargs):
     print(kwargs)
 
 
 def print_nicely(*args, **kwargs):
     named(**kwargs)
-    print(args)
     for arg, value in kwargs.items():
         print(f'{arg}: {value}')
 
 
-print_nicely(*ages, name='adam', age=31)
+#print_nicely(*ages, name='adam', age=31)
+print(list_avg([12,33,13]))
