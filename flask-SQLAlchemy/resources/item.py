@@ -7,6 +7,7 @@ from models.item import ItemModel
 class Item(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument('price', type=float, required=True, help='This field is required')
+    parser.add_argument('store_id', type=int, required=True, help='Item needs a store id')
 
     @jwt_required()  # auth on call
     def get(self, name):
@@ -20,7 +21,7 @@ class Item(Resource):
             return {'message': 'An item of "{}" already exists'.format(name)}, 400
 
         data = Item.parser.parse_args()
-        item = ItemModel(name, data['price'])
+        item = ItemModel(name, data['price'], data['store_id'])
 
         try:
             item.save_to_db()
@@ -52,7 +53,7 @@ class Item(Resource):
         # updated_item = ItemModel(name, data['price'])
 
         if item is None:
-            item = ItemModel(name, data['price'])
+            item = ItemModel(name, data['price'], data['store_id'])
             # try:
             #     updated_item.save_to_db()
             # except:
